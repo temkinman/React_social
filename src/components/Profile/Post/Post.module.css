@@ -2,9 +2,9 @@
   width: 50px;
   border-radius: 50%;
   height: 45px;
-  margin: 1%;
 }
 
 .item {
   color: black;
+  margin-top: 15px;
 }
