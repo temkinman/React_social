@@ -5,13 +5,13 @@
 
 .item a{
   color: white;
-  
+  text-decoration: none;
 }
 
 .item {
   margin: 5px 0px 5px 10px;
 }
 
-.active {
-  color: gold;
+.item a.active {
+  color: brown;
 }
