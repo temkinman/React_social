@@ -7,14 +7,17 @@ const MyPosts = () => {
     <div className={s.posts_content}>
       My posts
       <div>
-        <textarea></textarea>
-        <button>add post</button>
-        <button>remove</button>
+        <div>
+          <textarea></textarea>
+        </div>
+        <div>
+          <button>add post</button>
+        </div>
       </div>
       <div className="posts">
-        <Post message="Hi, what's your name?" countLike='0'/>
-        <Post message="How are you?" countLike='20'/>
-        <Post message="What's your job?"/>
+        <Post message="Hi, what's your name?" countLike='0' />
+        <Post message="How are you?" countLike='20' />
+        <Post message="What's your job?" />
       </div>
     </div>
   );
