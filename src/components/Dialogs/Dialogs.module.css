@@ -11,3 +11,11 @@
     text-decoration: none;
     color: white;
 }
+
+.dialog {
+    padding: 5px 0px 0px 10px;
+}
+
+.dialog a.active{
+    color: maroon;
+}
