@@ -8,7 +8,7 @@ import Dialogs from './components/Dialogs/Dialogs.jsx'
 import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
-import { Route, BrowserRouter, Switch, Link } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 const App = () => {
   return (
