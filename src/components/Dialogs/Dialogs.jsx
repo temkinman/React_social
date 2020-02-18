@@ -5,7 +5,7 @@ import Message from './Message/Message.jsx'
 
 const Dialogs = (props) => {
     let dialogsData = props.state.dialogs
-        .map( d => <DialogItem userName={d.userName} id={d.id} />);
+        .map(d => <DialogItem userName={d.userName} id={d.id} src={d.src} />);
 
     let messagesElements = props.state.messages
         .map(m => <Message message={m.message} />);
@@ -17,6 +17,14 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 {messagesElements}
+            </div>
+            <div>
+            </div>
+            <div>
+                <textarea className={s.addMessage}></textarea>
+                <div>
+                    <button className={s.btn + " " + s.mybtn}>add message</button>
+                </div>
             </div>
         </div>
     );

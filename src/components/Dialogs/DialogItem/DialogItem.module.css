@@ -1,9 +1,12 @@
-.dialogs a{
-    text-decoration: none;
-    color: white;
+.dialog img {
+    width: 55px;
+    margin-right: 10px;
 }
 
-.dialogs.dialog img {
-    width: 20px;
+.dialog {
+    padding: 5px 0px 0px 10px;
 }
 
+.dialog a.active{
+    color: maroon;
+}
