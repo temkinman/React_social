@@ -42,6 +42,7 @@ export let addPost = () => {
         countLike: 0
     }
     state.profilePage.posts.push(newPost);
+    state.profilePage.newTextPost = '';
     rerenderEntireTree(state);
 }
 
