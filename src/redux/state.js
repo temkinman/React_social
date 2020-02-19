@@ -1,4 +1,4 @@
-import {rerenderEntireTree} from '../render.js';
+import { rerenderEntireTree } from '../render.js';
 
 let state = {
     profilePage: {
@@ -6,7 +6,8 @@ let state = {
             { id: 1, message: "Hi, what's your name?", countLike: 0 },
             { id: 2, message: "How are you?", countLike: 10 },
             { id: 3, message: "What's your job?", countLike: 7 }
-        ]
+        ],
+        newTextPost: ''
     },
     dialogsPage: {
         dialogs: [
@@ -39,5 +40,10 @@ export let addPost = (textPost) => {
         countLike: 0
     }
     state.profilePage.posts.push(newPost);
-   rerenderEntireTree(state);
+    rerenderEntireTree(state);
+}
+
+export let updateTextPost = (newText) => {
+    state.profilePage.newTextPost = newText;
+    rerenderEntireTree(state);
 }

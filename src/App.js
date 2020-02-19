@@ -19,9 +19,12 @@ const App = (props) => {
         <div className="app-wrapper-content">
           <Switch>
             <Route path='/profile'
-              render={() => <Profile 
+              render={() => <Profile
                 state={props.state.profilePage}
-                addPost={props.addPost} />} />
+                addPost={props.addPost}
+                updateTextPost={props.updateTextPost}
+              />}
+            />
             <Route path='/dialogs'
               render={() => <Dialogs
                 state={props.state.dialogsPage}

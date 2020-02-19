@@ -10,8 +10,14 @@ const MyPosts = (props) => {
   
   let addPost = () => {
     let text = newPostElement.current.value;
-    props.addPost(text);
-    newPostElement.current.value = '';
+    
+    props.addPost(text); //тут передаем текст напечатанный в наш State, который в (BLL) находится redux.state.js
+    props.updateTextPost('');
+  }
+
+  let onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.updateTextPost(text);
   }
 
   return (
@@ -19,7 +25,10 @@ const MyPosts = (props) => {
       My posts
       <div>
         <div>
-          <textarea ref={newPostElement}></textarea>
+          <textarea onChange={onPostChange}
+                     ref={newPostElement}
+                     value={props.newTextPost}
+                     ></textarea>
         </div>
         <div>
           <button onClick={addPost}>add post</button>
