@@ -33,10 +33,12 @@ let state = {
 
 export default state;
 
-export let addPost = (textPost) => {
+window.state = state;
+
+export let addPost = () => {
     let newPost = {
         id: 4,
-        message: textPost,
+        message: state.profilePage.newTextPost,
         countLike: 0
     }
     state.profilePage.posts.push(newPost);

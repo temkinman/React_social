@@ -12,7 +12,7 @@ const MyPosts = (props) => {
     let text = newPostElement.current.value;
     
     props.addPost(text); //тут передаем текст напечатанный в наш State, который в (BLL) находится redux.state.js
-    props.updateTextPost('');
+    props.updateTextPost(''); //передаем наверх в стэйт пустую строку после того как пост был добавлен, чтобы в textarea было пусто
   }
 
   let onPostChange = () => {
