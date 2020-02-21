@@ -26,6 +26,10 @@ let store = {
             ]
         }
     },
+    _callSubscriber() {
+        console.log("State changed!");
+    },
+
     addPost() {
         let newPost = {
             id: 4,
@@ -36,18 +40,36 @@ let store = {
         this._state.profilePage.newTextPost = '';
         this._callSubscriber(this._state);
     },
-    _callSubscriber() {
-        console.log("State changed!");
-    },
     updateTextPost(newText) {
         this._state.profilePage.newTextPost = newText;
         this._callSubscriber(this._state);
     },
+
     subscribe(observer) {
         this._callSubscriber = observer;
     },
     getState() {
         return this._state;
+    },
+
+    //метод для управления методами store 
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD-POST':
+                let newPost = {
+                    id: 4,
+                    message: this._state.profilePage.newTextPost,
+                    countLike: 0
+                }
+                this._state.profilePage.posts.push(newPost);
+                this._state.profilePage.newTextPost = '';
+                this._callSubscriber(this._state);
+                break;
+            case 'UPDATE-TEXT-POST':
+                this._state.profilePage.newTextPost = action.text;
+                this._callSubscriber(this._state);
+                break;
+        }
     }
 }
 

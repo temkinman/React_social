@@ -12,8 +12,7 @@ serviceWorker.unregister();
 
 let rerenderEntireTree = (state) => {
     ReactDOM.render(<App state={state}
-        addPost={store.addPost.bind(store)} //передаем пропсами функцию добавления поста в Profile/Myposts/Post
-        updateTextPost={store.updateTextPost.bind(store)} //передаем пропсами функцию добавления для изменения textarea в посте в Profile/Myposts/Post
+        dispatch={store.dispatch.bind(store)}
     />, document.getElementById('root'));
 }
 
