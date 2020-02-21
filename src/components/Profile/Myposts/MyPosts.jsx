@@ -10,6 +10,7 @@ const MyPosts = (props) => {
   
   let addPost = () => {
     let text = newPostElement.current.value;
+    debugger;
     props.addPost(text); //тут передаем текст напечатанный в наш State, который в (BLL) находится redux.state.js
   }
 
