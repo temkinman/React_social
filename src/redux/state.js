@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_TEXT_POST = 'UPDATE-TEXT-POST';
+
 let store = {
     _state: {
         profilePage: {
@@ -30,21 +33,6 @@ let store = {
         console.log("State changed!");
     },
 
-    addPost() {
-        let newPost = {
-            id: 4,
-            message: this._state.profilePage.newTextPost,
-            countLike: 0
-        }
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newTextPost = '';
-        this._callSubscriber(this._state);
-    },
-    updateTextPost(newText) {
-        this._state.profilePage.newTextPost = newText;
-        this._callSubscriber(this._state);
-    },
-
     subscribe(observer) {
         this._callSubscriber = observer;
     },
@@ -55,7 +43,7 @@ let store = {
     //метод для управления методами store 
     dispatch(action) {
         switch (action.type) {
-            case 'ADD-POST':
+            case ADD_POST:
                 let newPost = {
                     id: 4,
                     message: this._state.profilePage.newTextPost,
@@ -65,11 +53,20 @@ let store = {
                 this._state.profilePage.newTextPost = '';
                 this._callSubscriber(this._state);
                 break;
-            case 'UPDATE-TEXT-POST':
-                this._state.profilePage.newTextPost = action.text;
+            case UPDATE_TEXT_POST:
+                this._state.profilePage.newTextPost = action.newText;
                 this._callSubscriber(this._state);
                 break;
         }
+    }
+}
+
+export const addPostCreator = () => ({ type: ADD_POST })
+
+export const updatePostCreator = (text) => {
+    return {
+        type: UPDATE_TEXT_POST,
+        newText: text    
     }
 }
 
