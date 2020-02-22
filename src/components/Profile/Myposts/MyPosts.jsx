@@ -4,13 +4,14 @@ import Post from '../Post/Post.jsx';
 import {addPostCreator, updatePostCreator} from '../../../redux/state';
 
 const MyPosts = (props) => {
-  let postsElements = props.posts
+  let postsElements = props.posts.posts
     .map(post => <Post message={post.message} countLike={post.countLike} />);
   
   let newPostElement = React.createRef();
   
   let addPost = () => {
-    props.dispatch(addPostCreator()); //тут передаем объект с параметрами в наш State, который в (BLL) находится redux.state.js
+    props.dispatch(addPostCreator());
+     //тут передаем объект с параметрами в наш State, который в (BLL) находится redux.state.js
   }
 
   let updateTextPost = () => {
@@ -29,7 +30,7 @@ const MyPosts = (props) => {
         <div>
           <textarea onChange={updateTextPost}
                      ref={newPostElement}
-                     value={props.newTextPost}
+                     value={props.posts.newTextPost}
                      ></textarea>
         </div>
         <div>
