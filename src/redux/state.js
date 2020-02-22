@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_TEXT_POST = 'UPDATE-TEXT-POST';
-const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_TEXT_MESSAGE = 'UPDATE-TEXT-MESSAGE';
+import dialogReducer from './dialog-reducer';
+import profileReducer from './profile-reducer';
+import sidebarReducer from './sidebar-reducer';
 
 let store = {
     _state: {
@@ -30,7 +29,8 @@ let store = {
                 { id: 5, message: "Yo" }
             ],
             newTextMessage: ''
-        }
+        },
+        sidebar: {}
     },
     _callSubscriber() {
         console.log("State changed!");
@@ -45,52 +45,17 @@ let store = {
 
     //метод для управления методами store 
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST:
-                let newPost = {
-                    id: 4,
-                    message: this._state.profilePage.newTextPost,
-                    countLike: 0
-                }
-                this._state.profilePage.posts.push(newPost);
-                this._state.profilePage.newTextPost = '';
-                this._callSubscriber(this._state);
-                break;
-            case UPDATE_TEXT_POST:
-                this._state.profilePage.newTextPost = action.newText;
-                this._callSubscriber(this._state);
-                break;
-            case SEND_MESSAGE:
-                let newMessage = {
-                    id: 6,
-                    message: this._state.dialogsPage.newTextMessage
-                }
-                this._state.dialogsPage.messages.push(newMessage);
-                this._state.dialogsPage.newTextMessage = '';
-                this._callSubscriber(this._state);
-                break;
-            case UPDATE_TEXT_MESSAGE:
-                this._state.dialogsPage.newTextMessage = action.newTextMessage;
-                this._callSubscriber(this._state);    
-        }
+        this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+        
+        this._callSubscriber(this._state);
     }
 }
 
-export const addPostCreator = () => ({ type: ADD_POST })
-export const updatePostCreator = (text) => {
-    return {
-        type: UPDATE_TEXT_POST,
-        newText: text    
-    }
-}
 
-export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
-export const updateMessageCreator = (text) => {
-    return {
-        type: UPDATE_TEXT_MESSAGE,
-        newTextMessage: text
-    }
-}
+
+
 
 
 export default store;
