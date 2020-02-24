@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import store from './redux/redux-store';
 import * as serviceWorker from './serviceWorker';
+import StoreContext from './storeContext'
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
@@ -11,16 +12,17 @@ import * as serviceWorker from './serviceWorker';
 serviceWorker.unregister();
 
 let rerenderEntireTree = (state) => {
-    ReactDOM.render(<App state={state} 
-        store={store}
-        dispatch={store.dispatch.bind(store)}
-    />, document.getElementById('root'));
+    ReactDOM.render(
+        <StoreContext.Provider value={store}>
+            <App />
+        </StoreContext.Provider>
+        , document.getElementById('root'));
 }
 
 rerenderEntireTree(store.getState());
 
 // store.subscribe(rerenderEntireTree);
-store.subscribe(()=>{
+store.subscribe(() => {
     let state = store.getState();
     return rerenderEntireTree(state)
 });

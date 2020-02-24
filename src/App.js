@@ -11,7 +11,6 @@ import Settings from './components/Settings/Settings.jsx';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 const App = (props) => {
-  
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
@@ -20,14 +19,10 @@ const App = (props) => {
         <div className="app-wrapper-content">
           <Switch>
             <Route path='/profile'
-              render={() => <Profile
-                store = {props.store}
-              />}
+              render={() => <Profile />}
             />
             <Route path='/dialogs'
-              render={() => <DialogsContainer
-                store = {props.store}
-              />} />
+              render={() => <DialogsContainer/>} />
             <Route path='/news' component={News} />
             <Route path='/music' component={Music} />
             <Route path='/friends' component={Music} />
