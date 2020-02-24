@@ -11,7 +11,8 @@ import * as serviceWorker from './serviceWorker';
 serviceWorker.unregister();
 
 let rerenderEntireTree = (state) => {
-    ReactDOM.render(<App state={state}
+    ReactDOM.render(<App state={state} 
+        store={store}
         dispatch={store.dispatch.bind(store)}
     />, document.getElementById('root'));
 }
