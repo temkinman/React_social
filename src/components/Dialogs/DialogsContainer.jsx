@@ -4,8 +4,6 @@ import { sendMessageCreator, updateMessageCreator } from '../../redux/dialog-red
 import StoreContext from '../../storeContext';
 
 const DialogsContainer = () => {
-
-
   return (
     <StoreContext.Consumer>
       {
@@ -31,7 +29,6 @@ const DialogsContainer = () => {
         }
       }
     </StoreContext.Consumer>
-
   );
 }
 

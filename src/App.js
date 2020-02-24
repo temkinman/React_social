@@ -10,7 +10,7 @@ import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
-const App = (props) => {
+const App = () => {
   return (
     <BrowserRouter>
       <div className='app-wrapper'>

@@ -11,7 +11,7 @@ import StoreContext from './storeContext'
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-let rerenderEntireTree = (state) => {
+let rerenderEntireTree = () => {
     ReactDOM.render(
         <StoreContext.Provider value={store}>
             <App />
@@ -19,10 +19,9 @@ let rerenderEntireTree = (state) => {
         , document.getElementById('root'));
 }
 
-rerenderEntireTree(store.getState());
+rerenderEntireTree();
 
 // store.subscribe(rerenderEntireTree);
 store.subscribe(() => {
-    let state = store.getState();
-    return rerenderEntireTree(state)
+    return rerenderEntireTree()
 });
