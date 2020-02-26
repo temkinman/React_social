@@ -25,11 +25,11 @@ const MyPosts = (props) => {
         <div>
           <textarea onChange={updateTextPost}
                      //ref={newPostElement}
-                     value={props.posts.newTextPost}
+                     value={props.newTextPost}
                      ></textarea>
         </div>
         <div>
-          <button onClick={props.addPost}>add post</button>
+          <button onClick={props.addPost}>add post</button> //тут делаем вызов callback ф-ции пришедшей в пропсах из MyPostsContainer
         </div>
       </div>
       <div className="posts">
