@@ -1,26 +1,21 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from '../Post/Post.jsx';
-import {addPostCreator, updatePostCreator} from '../../../redux/profile-reducer';
 
 const MyPosts = (props) => {
   let postsElements = props.posts.posts
     .map(post => <Post message={post.message} countLike={post.countLike} />);
   
-  let newPostElement = React.createRef();
+  //let newPostElement = React.createRef();
   
-  let addPost = () => {
+  /*let addPost = () => {
     props.dispatch(addPostCreator());
      //тут передаем объект с параметрами в наш State, который в (BLL) находится redux.state.js
-  }
+  }*/
 
-  let updateTextPost = () => {
-    let text = newPostElement.current.value;
-    // let action = {
-    //   type: 'UPDATE-TEXT-POST',
-    //   text: text
-    // }
-    props.dispatch(updatePostCreator(text));
+  let updateTextPost = (e) => {
+    let text = e.target.value;  //берем текущее значение из textarea
+    props.updateTextPost(text);
   }
 
   return (
@@ -29,12 +24,12 @@ const MyPosts = (props) => {
       <div>
         <div>
           <textarea onChange={updateTextPost}
-                     ref={newPostElement}
+                     //ref={newPostElement}
                      value={props.posts.newTextPost}
                      ></textarea>
         </div>
         <div>
-          <button onClick={addPost}>add post</button>
+          <button onClick={props.addPost}>add post</button>
         </div>
       </div>
       <div className="posts">
