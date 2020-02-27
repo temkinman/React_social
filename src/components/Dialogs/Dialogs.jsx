@@ -4,13 +4,13 @@ import DialogItem from './DialogItem/DialogItem.jsx';
 import Message from './Message/Message.jsx';
 
 const Dialogs = (props) => {
-    let dialogsData = props.dialogs
+    let dialogsData = props.dialogsPage.dialogs
         .map(d => <DialogItem userName={d.userName} id={d.id} src={d.src} />);
 
-    let messagesElements = props.messages
+    let messagesElements = props.dialogsPage.messages
         .map(m => <Message message={m.message} />);
 
-    let text = props.newTextMessage;
+    let text = props.dialogsPage.newTextMessage;
     let addMessage = () => {
         props.sendMessage();
     }

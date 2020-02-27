@@ -13,19 +13,10 @@ import { BrowserRouter } from 'react-router-dom';
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-let rerenderEntireTree = () => {
-    ReactDOM.render(
-        <BrowserRouter>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </BrowserRouter>
-        , document.getElementById('root'));
-}
-
-rerenderEntireTree();
-
-//store.subscribe(rerenderEntireTree);
-store.subscribe(() => {
-    rerenderEntireTree();
-});
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </BrowserRouter>
+    , document.getElementById('root'));
