@@ -12,7 +12,7 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    //<BrowserRouter>
       <div className='app-wrapper'>
         <Header />
         <Nav />
@@ -31,7 +31,7 @@ const App = () => {
         </div>
         <Footer />
       </div>
-    </BrowserRouter>
+    //</BrowserRouter>
   );
 }
 
