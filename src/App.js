@@ -12,7 +12,7 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 const App = () => {
   return (
-    //<BrowserRouter>
+    <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
         <Nav />
@@ -22,7 +22,7 @@ const App = () => {
               render={() => <Profile />}
             />
             <Route path='/dialogs'
-              render={() => <DialogsContainer/>} />
+              render={() => <DialogsContainer />} />
             <Route path='/news' component={News} />
             <Route path='/music' component={Music} />
             <Route path='/friends' component={Music} />
@@ -31,7 +31,7 @@ const App = () => {
         </div>
         <Footer />
       </div>
-    //</BrowserRouter>
+    </BrowserRouter>
   );
 }
 

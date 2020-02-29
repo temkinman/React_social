@@ -7,26 +7,12 @@ import store from './redux/redux-store';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-let rerenderEntireTree = () => {
-    console.log(store);
-    ReactDOM.render(
-        <BrowserRouter>
-            <Provider value={store}>
-                <App />
-            </Provider>
-        </BrowserRouter>
-        , document.getElementById('root'));
-}
-
-rerenderEntireTree();
-
-//store.subscribe(rerenderEntireTree);
-store.subscribe(() => {
-    return rerenderEntireTree()
-});
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </BrowserRouter>
+    , document.getElementById('root'));
