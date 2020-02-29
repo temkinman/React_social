@@ -29,7 +29,7 @@ const MyPosts = (props) => {
                      ></textarea>
         </div>
         <div>
-          <button onClick={props.addPost}>add post</button> //тут делаем вызов callback ф-ции пришедшей в пропсах из MyPostsContainer
+          <button onClick={props.addPost}>add post</button>
         </div>
       </div>
       <div className="posts">

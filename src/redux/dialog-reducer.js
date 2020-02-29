@@ -21,23 +21,24 @@ let initialState = {
 }
 
 const dialogReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case SEND_MESSAGE: {
             let newMessage = {
                 id: 6,
                 message: state.newTextMessage
             }
-            let stateCopy = { ...state };
-            stateCopy.dialogs = [...state.dialogs];
-            stateCopy.messages = [...state.messages];
-            stateCopy.messages.push(newMessage);
-            stateCopy.newTextMessage = '';
-            return stateCopy;
+            return {
+                ...state,                                               // таким синтаксисом можно добавить эл-т в объект messages
+                messages: [...state.messages, newMessage], // messages: [...state.messages, newMessage]
+                newTextMessage: ''
+            }
         }
         case UPDATE_TEXT_MESSAGE: {
-            let stateCopy = { ...state };
-            stateCopy.newTextMessage = action.newTextMessage;
-            return stateCopy;
+            return {
+                ...state,
+                newTextMessage: action.newTextMessage
+            }
         }
         default: return state;
     }
