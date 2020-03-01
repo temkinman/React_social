@@ -2,13 +2,13 @@ const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_TEXT_MESSAGE = 'UPDATE-TEXT-MESSAGE';
 
 let initialState = {
-  dialogs: [
-    { id: 1, userName: "Dima", src: "https://cdn0.iconfinder.com/data/icons/iconshock_guys/512/david.png" },
-    { id: 2, userName: "Vasya", src: "https://cdn0.iconfinder.com/data/icons/iconshock_guys/512/andrew.png" },
-    { id: 3, userName: "Petya", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQu2cza9liEWFa0WtQyPhbR1VOsvqGZpfntATqvSXXXo7swxco&s" },
-    { id: 4, userName: "Alex", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmVUSXuYTRN02SB4TLt-uQ5Kb-Rj7guE9uo4luZQmLw7wGrU2pZQ&s" },
-    { id: 5, userName: "Roma", src: "https://images.vector-images.com/clipart/xl/176/arab5.jpg" },
-    { id: 6, userName: "XXX", src: "https://images.vector-images.com/clipart/xl/176/arab5.jpg" }
+  users: [
+    { id: 1, userName: "AMNUSA", src: "https://cdn0.iconfinder.com/data/icons/iconshock_guys/512/david.png" },
+    { id: 2, userName: "IT-KAMASUTRA", src: "https://cdn0.iconfinder.com/data/icons/iconshock_guys/512/andrew.png" },
+    { id: 3, userName: "NOMAD", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQu2cza9liEWFa0WtQyPhbR1VOsvqGZpfntATqvSXXXo7swxco&s" },
+    { id: 4, userName: "User_1", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmVUSXuYTRN02SB4TLt-uQ5Kb-Rj7guE9uo4luZQmLw7wGrU2pZQ&s" },
+    { id: 5, userName: "User_2", src: "https://images.vector-images.com/clipart/xl/176/arab5.jpg" },
+    { id: 6, userName: "User_3", src: "https://images.vector-images.com/clipart/xl/176/arab5.jpg" }
   ],
   messages: [
     { id: 1, message: "Hi!" },
@@ -20,7 +20,7 @@ let initialState = {
   newTextMessage: ''
 }
 
-const dialogReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case SEND_MESSAGE: {
