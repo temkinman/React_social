@@ -1,55 +1,38 @@
-const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_TEXT_MESSAGE = 'UPDATE-TEXT-MESSAGE';
+const SHOW_MORE = 'SHOW_MORE';
+const FOLLOW = 'FOLLOW';
 
 let initialState = {
   users: [
-    { id: 1, userName: "AMNUSA", src: "https://cdn0.iconfinder.com/data/icons/iconshock_guys/512/david.png" },
-    { id: 2, userName: "IT-KAMASUTRA", src: "https://cdn0.iconfinder.com/data/icons/iconshock_guys/512/andrew.png" },
-    { id: 3, userName: "NOMAD", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQu2cza9liEWFa0WtQyPhbR1VOsvqGZpfntATqvSXXXo7swxco&s" },
-    { id: 4, userName: "User_1", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmVUSXuYTRN02SB4TLt-uQ5Kb-Rj7guE9uo4luZQmLw7wGrU2pZQ&s" },
-    { id: 5, userName: "User_2", src: "https://images.vector-images.com/clipart/xl/176/arab5.jpg" },
-    { id: 6, userName: "User_3", src: "https://images.vector-images.com/clipart/xl/176/arab5.jpg" }
+    { id: 1, userName: "AMNUSA", src: "https://cdn0.iconfinder.com/data/icons/iconshock_guys/512/david.png", location: { country: 'USA', city: 'Uta' }, status: 'I am looking gor a new job' },
+    { id: 2, userName: "IT-KAMASUTRA", src: "https://cdn0.iconfinder.com/data/icons/iconshock_guys/512/andrew.png", location: { country: 'Russia', city: 'Moscow' }, status: 'I am a good man' },
+    { id: 3, userName: "NOMAD", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQu2cza9liEWFa0WtQyPhbR1VOsvqGZpfntATqvSXXXo7swxco&s", location: { country: 'Canada', city: 'Toronto' }, status: 'I am a truck driver' },
+    { id: 4, userName: "Artem", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmVUSXuYTRN02SB4TLt-uQ5Kb-Rj7guE9uo4luZQmLw7wGrU2pZQ&s", location: { country: 'Belarus', city: 'Zhlobin' }, status: 'I will become a developer' },
+    { id: 5, userName: "Alex", src: "https://images.vector-images.com/clipart/xl/176/arab5.jpg", location: { country: 'USA', city: 'Washington' }, status: 'I am a sportman' },
+    { id: 6, userName: "Kolya", src: "https://images.vector-images.com/clipart/xl/176/arab5.jpg", location: { country: 'Belarus', city: 'Gomel' }, status: 'I love to fly' }
   ],
-  messages: [
-    { id: 1, message: "Hi!" },
-    { id: 2, message: "Hello my friend!" },
-    { id: 3, message: "Dou you speak English?" },
-    { id: 4, message: "Yo" },
-    { id: 5, message: "Yo" }
-  ],
-  newTextMessage: ''
+  testUser: { id: 999, nameTest: 'First' },
+  userFollow: ''
 }
 
 const userReducer = (state = initialState, action) => {
-
   switch (action.type) {
-    case SEND_MESSAGE: {
-      let newMessage = {
-        id: 6,
-        message: state.newTextMessage
-      }
+    case SHOW_MORE:
+      console.log('It is user-reducer SHOW MORE is DONE');
       return {
-        ...state,                                               // таким синтаксисом можно добавить эл-т в объект messages
-        messages: [...state.messages, newMessage], // messages: [...state.messages, newMessage]
-        newTextMessage: ''
+        ...state
       }
-    }
-    case UPDATE_TEXT_MESSAGE: {
+    case FOLLOW:
+      console.log(action.userFollow + ' FOLLOW');
       return {
-        ...state,
-        newTextMessage: action.newTextMessage
+        ...state
       }
-    }
     default: return state;
   }
-
 }
 
-export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
-export const updateMessageCreator = (text) => {
-  return {
-    type: UPDATE_TEXT_MESSAGE,
-    newTextMessage: text
-  }
-}
-export default dialogReducer;
+export const followUserCreator = (userName) => ({
+  type: FOLLOW,
+  userFollow: userName
+})
+export const show_moreCreator = () => ({ type: SHOW_MORE })
+export default userReducer;

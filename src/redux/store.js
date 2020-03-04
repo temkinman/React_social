@@ -2,6 +2,8 @@ import dialogReducer from './dialog-reducer';
 import profileReducer from './profile-reducer';
 import sidebarReducer from './sidebar-reducer';
 
+//весь этот файл уже не используем
+/*
 let store = {
     _state: {
         profilePage: {
@@ -61,7 +63,7 @@ let store = {
 export default store;
 
 window.store = store;  //глобально обращаемся к store
-
+*/
 /*export const addPost = () => {
 
 

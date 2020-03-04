@@ -1,11 +1,24 @@
 import React from 'react';
-import style from './Users.module.css';
+import s from './Users.module.css';
+import UserItem from './UserItem/UserItem';
 
-let Users = () => {
+let Users = (props) => {
+  let usersItems = props.users.users
+    .map(user => <UserItem
+      id={user.id}
+      userName={user.userName}
+      src={user.src}
+      location={user.location}
+      key={user.id}
+      status={user.status}
+      followUser={props.followUser} />);
   return (
-    <div>
-      Users
+    <div className={s.container}>
+      {usersItems}
+      <button className={s.show_more} onClick={props.showMore}>show more</button>
+      {/* <p>{usersItems[0].userName}</p> */}
     </div>
+
   );
 }
 

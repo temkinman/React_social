@@ -1,0 +1,52 @@
+.user{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-areas: "";
+    align-items: center;
+}
+.avatar {
+    width: 70px;
+}
+
+/* .users {
+    display: grid;
+    grid-template-columns: 3fr 10fr;
+} */
+
+/* .item {
+    height: 120px;
+} */
+
+.userInfo{
+    width: 28em;
+    height: 6em;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    color: #393c40;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    padding: 5px 8px;
+    transition: background-color 0.2s ease 0s;
+}
+
+.userItem{
+    margin: 20px 10px 5px 10px;
+    text-align: center;
+}
+
+.userItem p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: blue;
+
+}
+.userItem button{
+    width: 80px;
+    height: 30px;
+    border-radius: 6px 6px 6px 6px;
+    color: aliceblue;
+    background-color: darkslategrey;
+}

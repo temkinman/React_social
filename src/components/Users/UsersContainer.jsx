@@ -1,26 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Users from './Users'
-// import { addPostCreator, updatePostCreator } from '../../../redux/profile-reducer';
+import { followUserCreator, show_moreCreator } from '../../redux/users-reducer';
 
 let mapStateToProps = (state) => {
   return {
-    posts: state.profilePage
+    users: state.users
   }
 }
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    addPost: () => {
-      dispatch(addPostCreator());
+    followUser: (name) => {
+      dispatch(followUserCreator(name));
     },
-    updateTextPost: (text) => {
-      dispatch(updatePostCreator(text));
+    showMore: () => {
+      dispatch(show_moreCreator());
     }
   }
 }
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
 
-export default MyPostsContainer;
+export default UsersContainer;
 
