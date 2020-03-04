@@ -3,7 +3,7 @@ import s from './Users.module.css';
 import UserItem from './UserItem/UserItem';
 
 let Users = (props) => {
-  let usersItems = props.users.users
+  let usersItems = props.users
     .map(user => <UserItem
       id={user.id}
       userName={user.userName}
@@ -11,7 +11,10 @@ let Users = (props) => {
       location={user.location}
       key={user.id}
       status={user.status}
-      followUser={props.followUser} />);
+      followUser={props.followUser}
+      unfollowUser={props.unfollowUser}
+      folowed={user.folowed}
+      />);
   return (
     <div className={s.container}>
       {usersItems}

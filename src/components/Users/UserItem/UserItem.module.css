@@ -27,9 +27,9 @@
     color: #393c40;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.2em;
-    line-height: 1.4em;
+    /* line-height: 1.4em; */
     padding: 5px 8px;
-    transition: background-color 0.2s ease 0s;
+    background-color: #e7eaf4;
 }
 
 .userItem{
