@@ -1,21 +1,14 @@
 .user{
     display: grid;
-    grid-template-columns: 1fr 6fr;
+    grid-template-columns: 2fr 6fr;
     grid-template-areas: "";
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .avatar {
     width: 70px;
 }
-
-/* .users {
-    display: grid;
-    grid-template-columns: 3fr 10fr;
-} */
-
-/* .item {
-    height: 120px;
-} */
 
 .userInfo{
     width: 28em;
@@ -27,13 +20,12 @@
     color: #393c40;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.2em;
-    /* line-height: 1.4em; */
     padding: 5px 8px;
     background-color: #e7eaf4;
+    position: relative;
 }
 
 .userItem{
-    margin: 20px 10px 5px 10px;
     text-align: center;
 }
 
@@ -49,4 +41,34 @@
     border-radius: 6px 6px 6px 6px;
     color: aliceblue;
     background-color: darkslategrey;
+}
+
+.left-top {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+
+.left_top {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+
+.left_bottom {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+}
+
+.right_top {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.right_bottom {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
 }
