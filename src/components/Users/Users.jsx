@@ -5,11 +5,13 @@ import * as axios from 'axios';
 
 let Users = (props) => {
   // debugger
-  if (props.users.length === 0) {
-    axios.get('https://social-network.samuraijs.com/api/1.0/users').then( response => {
-      console.log(response.data.items);
-      props.setUsers(response.data);
-    });
+  let getusers = () => {
+    if (props.users.length === 0) {
+      axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+        console.log(response.data.items);
+        props.setUsers(response.data);
+      });
+    }
   }
 
   let usersItems = props.users
@@ -26,6 +28,9 @@ let Users = (props) => {
     />);
   return (
     <div className={s.container}>
+      {props.users.length === 0 ?
+        <button onClick={getusers}>Get users</button> : ""
+      }
       {usersItems}
       <button className={s.show_more} onClick={props.showMore}>show more</button>
     </div>
