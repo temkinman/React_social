@@ -12,3 +12,12 @@
 .container {
     text-align: center;
 }
+
+.page .active {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.page a{
+    margin-right: 5px;
+}
