@@ -1,17 +1,16 @@
-import React from 'react';
-import s from './Users.module.css';
-import UserItem from './UserItem/UserItem';
-import * as axios from 'axios';
+import React from 'react'
+import s from './Users.module.css'
+import UserItem from './UserItem/UserItem'
+import { NavLink } from 'react-router-dom';
 
-let Users = (props) => {
-  // debugger
-  let getusers = () => {
-    if (props.users.length === 0) {
-      axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-        console.log(response.data.items);
-        props.setUsers(response.data);
-      });
-    }
+
+const Users = (props) => {
+  let totalPages = Math.ceil(props.countTotalUsers / props.sizePage);
+  let pages = [];
+  let currentPage = props.currentPage;
+
+  for (let i = 1; i <= totalPages; i++) {
+    pages.push(i);
   }
 
   let usersItems = props.users
@@ -27,30 +26,26 @@ let Users = (props) => {
       folowed={user.folowed}
     />);
 
-    let totalPages = Math.ceil(this.props.countTotalUsers / this.props.sizePage);
-    let pages=[];
-
-    for (let i=1; i<= totalPages.length; i++){
-      pages.push(i);
-    }
   return (
-    
     <div className={s.container}>
-      {/* <div className={s.page}>
-        {pages.map( p =>{
-          return <span className= {this.props.currentPage === p && s.selectedPage}></span>
+      <div className={s.page}>
+        {pages.map((p) => {
+          if (p < 5 || p > pages.length - 4) {
+            return <NavLink
+              to={`/users/${p}`}
+              onClick={() => props.onPageChanged(p)}
+              className={currentPage === p && `${s.active}`}>{p}
+            </NavLink>
+          }
+          else if (p === 5) {
+            return <span><a href="#">...</a></span>
+          }
         })}
       </div>
-
-      {props.users.length === 0 ?
-        <button onClick={getusers}>Get users</button> : ""
-      }
       {usersItems}
-      <button className={s.show_more} onClick={props.showMore}>show more</button> */}
+      {/* <button className={s.show_more} onClick={this.props.showMore}>show more</button> */}
     </div>
   );
 }
-
-
 
 export default Users;
