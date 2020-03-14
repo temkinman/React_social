@@ -26,6 +26,8 @@ const Users = (props) => {
       folowed={user.folowed}
     />);
 
+    
+
   return (
     <div className={s.container}>
       <div className={s.page}>
