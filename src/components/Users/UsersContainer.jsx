@@ -28,8 +28,6 @@ class UsersContainer extends React.Component {
         this.props.setFetching(false)
         this.props.setTotalUsers(100);
       });
-
-    console.log("final isFetching " + this.props.isFetching)
   }
 
   render() {

@@ -9,6 +9,7 @@ import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
         <div className="app-wrapper-content">
           <Switch>
             <Route path='/profile'
-              render={() => <Profile />} />
+              render={() => <ProfileContainer />} />
             <Route path='/dialogs'
               render={() => <DialogsContainer />} />
             <Route path='/users'

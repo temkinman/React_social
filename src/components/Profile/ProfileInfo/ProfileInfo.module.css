@@ -10,3 +10,7 @@
 .description{
   margin: 10px 0px 5px 10px;
 }
+
+.contacts {
+  list-style: none;
+}
