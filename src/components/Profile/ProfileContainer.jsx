@@ -13,7 +13,6 @@ class ProfileContainer extends React.Component {
         if(!userId) {
             userId = 2;
         }
-        // debugger
         Axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).
             then(response => {
                 // this.props.addPostCreator(response.data.profilePage);
