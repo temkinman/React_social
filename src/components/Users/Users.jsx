@@ -12,7 +12,6 @@ const Users = (props) => {
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
   }
-
   let usersItems = props.users
     .map(user => <UserItem
       id={user.id}
@@ -21,9 +20,9 @@ const Users = (props) => {
       location={user.location}
       key={user.id}
       status={user.status}
-      followUser={props.followUser}
-      unfollowUser={props.unfollowUser}
-      folowed={user.folowed}
+      follow={props.follow}
+      unfollow={props.unfollow}
+      followed={user.followed}
     />);
 
   return (

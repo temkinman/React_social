@@ -9,7 +9,7 @@ class UsersContainer extends React.Component {
 
   componentDidMount() {
     this.props.setFetching(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`).
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`, {withCredentials: true}).
       then(response => {
         this.props.setUsers(response.data);
         // this.props.setTotalUsers(response.data.totalCount);
@@ -21,7 +21,7 @@ class UsersContainer extends React.Component {
   onPageChanged = (p) => {
     this.props.setCurrentPage(p);
     this.props.setFetching(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`).
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`, {withCredentials: true}).
       then(response => {
         this.props.setUsers(response.data);
         // this.props.setTotalUsers(response.data.totalCount);
@@ -31,17 +31,17 @@ class UsersContainer extends React.Component {
   }
 
   render() {
-
     return <>
-      {this.props.isFetching ? <Preloader/> : null}
+      {this.props.isFetching ? <Preloader /> : null}
       <Users
         users={this.props.users}
         onPageChanged={this.onPageChanged}
         countTotalUsers={this.props.countTotalUsers}
         sizePage={this.props.sizePage}
         currentPage={this.props.currentPage}
-        followUser={this.props.followUser}
-        unfollowUser={this.props.unfollowUser}
+        follow={this.props.follow}
+        unfollow={this.props.unfollow}
+        
       />
     </>
   }
@@ -57,5 +57,5 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {follow, unfollow, show_more, setUsers, setTotalUsers, setCurrentPage, setFetching})(UsersContainer);;
+export default connect(mapStateToProps, { follow, unfollow, show_more, setUsers, setTotalUsers, setCurrentPage, setFetching })(UsersContainer);;
 

@@ -26,7 +26,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         users: state.users.map(u => {
           if (u.id === action.userId) {
-            return { ...u, folowed: true }  // тут проверяем совпадают ли id и копируем поверхностно + меняем значение одного поля юзера
+            return { ...u, followed: true }  // тут проверяем совпадают ли id и копируем поверхностно + меняем значение одного поля юзера
           }
           return u;
         })
@@ -36,7 +36,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         users: state.users.map(u => {
           if (u.id === action.userId) {
-            return { ...u, folowed: false }  // тут проверяем совпадают ли id и копируем поверхностно user + меняем значение одного поля юзера
+            return { ...u, followed: false }  // тут проверяем совпадают ли id и копируем поверхностно user + меняем значение одного поля юзера
           }
           return u;
         })
