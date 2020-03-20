@@ -3,6 +3,7 @@ import s from './UserItem.module.css';
 import userPhoto from '../../../assets/images/user-avatar.jpg';
 import { NavLink } from 'react-router-dom';
 import * as axios from 'axios';
+import {unfollowUser, followUser} from '../../api/api'
 
 //Для тех, кто столкнулся с ошибкой 401: для начала проверьте, зарегистрированы ли вы на сайте,
 
@@ -16,28 +17,17 @@ const UserItem = (props) => {
  
   let changefollowed = () => {
     if(props.followed){
-      axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
-        withCredentials: true,
-        headers: {
-          "API-KEY" : "7f332eb3-f02c-470f-9798-2fd2a0f07f96"
-        }
-      }).
-      then(response => {
-        if(response.data.resultCode === 0){
+      unfollowUser(id).
+      then(data => {
+        if(data.resultCode === 0){
           props.unfollow(id)
         }
-      });
+      })
 
     } else{
-      axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {}, {
-        withCredentials: true,
-        headers: {
-          "API-KEY" : "7f332eb3-f02c-470f-9798-2fd2a0f07f96"
-        }
-      }).
-      then(response => {
-        if(response.data.resultCode === 0){
-          console.log("response = OK ELSE")
+      followUser(id).
+      then(data => {
+        if(data.resultCode === 0){
           props.follow(id)
         }
       });
