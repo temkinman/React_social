@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 
 
 const Users = (props) => {
+  
+
   let totalPages = Math.ceil(props.countTotalUsers / props.sizePage);
   let pages = [];
   let currentPage = props.currentPage;
@@ -23,6 +25,9 @@ const Users = (props) => {
       follow={props.follow}
       unfollow={props.unfollow}
       followed={user.followed}
+      followingProgress={props.followingProgress}
+      setFollowingProgress={props.setFollowingProgress}
+      userIdFollow={props.userIdFollow}
     />);
 
   return (

@@ -72,3 +72,7 @@
     right: 5px;
     bottom: 5px;
 }
+
+.disabled {
+    background-color: #2f4f4f00 !important;
+}

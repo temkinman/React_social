@@ -13,14 +13,18 @@ import {unfollowUser, followUser} from '../../api/api'
 // что сервер с API тупит, отдаёт ответ по 40 секунд, тут только ждать. Димычу спасибо)) Самый лучший препод)
 
 const UserItem = (props) => {
+  // debugger
   const id = props.id;
  
   let changefollowed = () => {
+    props.setFollowingProgress(true, id);
     if(props.followed){
+      
       unfollowUser(id).
       then(data => {
         if(data.resultCode === 0){
           props.unfollow(id)
+          props.setFollowingProgress(false, id);
         }
       })
 
@@ -29,9 +33,11 @@ const UserItem = (props) => {
       then(data => {
         if(data.resultCode === 0){
           props.follow(id)
+          props.setFollowingProgress(false, id);
         }
       });
     }  
+    
   }
   return (
     <div className={s.user}>
@@ -40,7 +46,10 @@ const UserItem = (props) => {
           <img src={props.src == null ? userPhoto : props.photos.small} className={s.avatar} />
         </NavLink>
         <p><b>{props.name}</b></p>
-        <button onClick={changefollowed}>{props.followed ? 'unfollow' : 'follow'}</button>
+        <button onClick={changefollowed}
+          disabled= {props.followingProgress && props.userIdFollow === props.id}
+          className={(props.followingProgress && props.userIdFollow === props.id) ? s.disabled : ""}
+        >{props.followed ? 'unfollow' : 'follow'}</button>
       </div>
       <div className={s.userInfo}>
         <span className={s.left_top}>{props.name}</span><br />
