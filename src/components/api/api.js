@@ -26,5 +26,14 @@ export const usersAPI = {
             .then(response => {
                 return response.data;
             })
+    },
+    loginUser() {
+        return instance.get(`auth/me`, { withCredentials: true }).
+            then(response => {
+                let isAuth = response.data.resultCode;
+                if (isAuth === 0) {
+                    return response.data.data;
+                }
+            })
     }
 }
