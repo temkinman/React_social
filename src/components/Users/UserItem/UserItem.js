@@ -2,8 +2,7 @@ import React from 'react';
 import s from './UserItem.module.css';
 import userPhoto from '../../../assets/images/user-avatar.jpg';
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios';
-import {unfollowUser, followUser} from '../../api/api'
+// import * as axios from 'axios';
 
 //Для тех, кто столкнулся с ошибкой 401: для начала проверьте, зарегистрированы ли вы на сайте,
 
@@ -13,31 +12,10 @@ import {unfollowUser, followUser} from '../../api/api'
 // что сервер с API тупит, отдаёт ответ по 40 секунд, тут только ждать. Димычу спасибо)) Самый лучший препод)
 
 const UserItem = (props) => {
-  // debugger
   const id = props.id;
  
   let changefollowed = () => {
-    props.setFollowingProgress(true, id);
-    if(props.followed){
-      
-      unfollowUser(id).
-      then(data => {
-        if(data.resultCode === 0){
-          props.unfollow(id)
-          props.setFollowingProgress(false, id);
-        }
-      })
-
-    } else{
-      followUser(id).
-      then(data => {
-        if(data.resultCode === 0){
-          props.follow(id)
-          props.setFollowingProgress(false, id);
-        }
-      });
-    }  
-    
+    props.followed ? props.unfollow(id) : props.follow(id);
   }
   return (
     <div className={s.user}>

@@ -26,7 +26,6 @@ const Users = (props) => {
       unfollow={props.unfollow}
       followed={user.followed}
       followingProgress={props.followingProgress}
-      setFollowingProgress={props.setFollowingProgress}
       userIdFollow={props.userIdFollow}
     />);
 
