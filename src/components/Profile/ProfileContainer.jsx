@@ -15,11 +15,7 @@ class ProfileContainer extends React.Component {
         }
         Axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).
             then(response => {
-                // this.props.addPostCreator(response.data.profilePage);
-                // this.props.setTotalUsers(response.data.totalCount);
                 this.props.setUserProfile(response.data);
-                // this.props.setUserId(userId);
-                // this.props.setFetching(false);
             })
     }
     

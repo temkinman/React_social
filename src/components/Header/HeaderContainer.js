@@ -1,9 +1,7 @@
 import React from 'react'
 import Header from './Header';
-import Axios from 'axios';
 import { connect } from 'react-redux';
 import { loginUser } from '../../redux/auth-reducer'
-// import {loginUser} from '../'
 
 
 class HeaderContainer extends React.Component {

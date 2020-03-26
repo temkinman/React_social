@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 
 const Users = (props) => {
-  
+
 
   let totalPages = Math.ceil(props.countTotalUsers / props.sizePage);
   let pages = [];
@@ -29,21 +29,28 @@ const Users = (props) => {
       userIdFollow={props.userIdFollow}
     />);
 
+  // let x = 0;
+
   return (
     <div className={s.container}>
       <div className={s.page}>
         {pages.map((p) => {
-          if (p < 5 || p > pages.length - 4) {
-            return <NavLink
+          return (p % 40 === 0) ?
+          <>
+              <NavLink
+                to={`/users/${p}`}
+                onClick={() => props.onPageChanged(p)}
+                className={currentPage === p && `${s.active}`}>{p}
+              </NavLink>{<br/>}
+           </>
+             :
+            <NavLink
               to={`/users/${p}`}
               onClick={() => props.onPageChanged(p)}
               className={currentPage === p && `${s.active}`}>{p}
             </NavLink>
-          }
-          else if (p === 5) {
-            return <span><a href="#">...</a></span>
-          }
-        })}
+        }
+        )}
       </div>
       {usersItems}
       {/* <button className={s.show_more} onClick={this.props.showMore}>show more</button> */}

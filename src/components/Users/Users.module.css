@@ -10,7 +10,7 @@
     margin-top: 20px;
 }
 .container {
-    text-align: center;
+    text-align: left;
 }
 
 .page .active {
@@ -21,3 +21,7 @@
 .page a{
     margin-right: 5px;
 }
+
+/* .page {
+    width: 300px;
+} */
