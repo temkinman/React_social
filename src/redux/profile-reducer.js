@@ -1,4 +1,4 @@
-import Axios from 'axios'
+import { usersAPI } from '../components/api/api'
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_TEXT_POST = 'UPDATE-TEXT-POST';
@@ -12,7 +12,7 @@ let initialState = {
     { id: 3, message: "What's your job?", countLike: 7 }
   ],
   newTextPost: '',
-  profile: null, 
+  profile: null,
   // userId: 0
 }
 
@@ -38,7 +38,7 @@ const profileReducer = (state = initialState, action) => {
     }
 
     case SET_USER_PROFILE: {
-      return {...state,profile: action.profile}
+      return { ...state, profile: action.profile }
     }
 
     // case SET_USER_ID: {
@@ -57,19 +57,14 @@ export const updatePostCreator = (text) => {
     newText: text
   }
 }
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 //export const setUserId = (userId) => ({ type: SET_USER_ID, userId})
 
-export const setProfileThunk = () => {
-  return (dispatch)=>{
-    let userId = this.props.match.params.userId;
-        if(!userId) {
-            userId = 2;
-        }
-        Axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).
-            then(response => {
-                this.props.setUserProfile(response.data);
-            })
+export const getUserProfile = (userId) => {
+  return (dispatch) => {
+    usersAPI.getProfile(userId).then(response => {
+      dispatch(setUserProfile(response.data))
+    });
   }
 }
 

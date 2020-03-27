@@ -1,5 +1,5 @@
 import React from 'react'
-import { usersAPI } from '../components/api/api'
+import { authApi } from '../components/api/api'
 const SET_USER_DATA = 'SET_USER_DATA'
 
 
@@ -25,8 +25,14 @@ const authReducer = (state = initialState, action) => {
 export const setAuthUserData = (userId, email, login) => ({ type: SET_USER_DATA, data: { userId, email, login } })
 export default authReducer;
 
-export const loginUser = (data) => {
+export const getAuthUserData = () => {
     return (dispatch) => {
-        usersAPI.loginUser().then(data => dispatch(setAuthUserData(data.id, data.email, data.login)));
+        authApi.me().then(response => {
+            if (response.data.resultCode === 0) {
+                let {id, login, email} = response.data.data; //тут раскладываем ответ от сервера по переменным
+                dispatch(setAuthUserData(id, email, login));
+            }
+        }
+        )
     }
 }

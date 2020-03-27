@@ -27,13 +27,26 @@ export const usersAPI = {
                 return response.data;
             })
     },
-    loginUser() {
-        return instance.get(`auth/me`, { withCredentials: true }).
-            then(response => {
-                let isAuth = response.data.resultCode;
-                if (isAuth === 0) {
-                    return response.data.data;
-                }
-            })
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`);
+    }
+
+    // return usersAPI.loginUser().then(
+    //     data => {
+    //         if(data.resultCode === 0) {
+    //             return instance.get(`profile/${data.data.id}`).
+    //             // instance.get(`profile/2`).
+    //             then(response => {
+    //                 return response.data;
+    //             })
+    //         }
+    //     }
+    // )
+}
+
+export const authApi = {
+    me() {
+        return instance.get(`auth/me`)
     }
 }
+
